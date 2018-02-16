@@ -1,30 +1,59 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+//import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-function formatName(user) {
-    return user.firstName + ' ' + user.lastName;
+function formatDate(value) {
+    return value.toLocaleString();
 }
 
-function getGreeting(user) {
-    if (user) {
-        return <h1>Hello, {formatName(user)}!</h1>;
-    }
-
-    return <h1>Hello, Stranger.</h1>
-}
-
-function tick() {
-    const element = (
-        <div>
-            <h1>Hello, world!</h1>
-            <h2>It is {new Date().toLocaleTimeString()}.</h2>
+function Comment(props) {
+    return (
+      <div className="Comment">
+        <UserInfo user={props.author} />
+        <div className="Comment-text">
+          {props.text}
         </div>
+        <div className="Comment-date">
+          {formatDate(props.date)}
+        </div>
+      </div>
     );
-    ReactDOM.render(element, document.getElementById('root'));
-}
+  }
 
-setInterval(tick, 1000);
+  function UserInfo(props) {
+    return (
+      <div className="UserInfo">
+        <Avatar user={props.user} />
+        <div className="UserInfo-name">
+          {props.user.name}
+        </div>
+      </div>
+    );
+  }
+
+  function Avatar(props) {
+    return (
+      <img className="Avatar"
+        src={props.user.avatarUrl}
+        alt={props.user.name}
+      />
+  
+    );
+  }
+
+  const author = {
+      name : 'Convenience',
+      avatarUrl: 'https://www.npmjs.com/~zkat'
+  }
+
+ReactDOM.render(
+    <Comment 
+        author={author} 
+        text='Test' 
+        date={Date.now()} />,
+    document.getElementById('root')
+);
+
 registerServiceWorker();
