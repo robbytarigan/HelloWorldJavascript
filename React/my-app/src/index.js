@@ -4,56 +4,61 @@ import './index.css';
 //import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-function formatDate(value) {
-    return value.toLocaleString();
+class Clock extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {date: new Date(), counter : 1};
+    }
+
+    tick() {
+        this.setState((prevState, props) => ({
+            date: new Date(),
+            counter: prevState.counter + props.increment
+        }));
+    }
+
+    componentDidMount() {
+        this.timerId = setInterval(
+            () => this.tick(),
+            1000
+        )
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerId)
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>Hello, world!</h1>
+                <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+                <FormattedDate date={this.state.date} />
+                <h2>Current Counter is {this.state.counter}. increment={this.props.increment}</h2>
+            </div>
+        );
+    }
 }
 
-function Comment(props) {
+function FormattedDate(props) {
     return (
-      <div className="Comment">
-        <UserInfo user={props.author} />
-        <div className="Comment-text">
-          {props.text}
-        </div>
-        <div className="Comment-date">
-          {formatDate(props.date)}
-        </div>
-      </div>
+        <h2>It is formatted {props.date.toLocaleTimeString()}.</h2>
     );
-  }
+}
 
-  function UserInfo(props) {
+function App() {
     return (
-      <div className="UserInfo">
-        <Avatar user={props.user} />
-        <div className="UserInfo-name">
-          {props.user.name}
+        <div>
+            <Clock increment={0}/>
+            <Clock increment={1}/>
+            <Clock increment={2}/>
         </div>
-      </div>
     );
-  }
-
-  function Avatar(props) {
-    return (
-      <img className="Avatar"
-        src={props.user.avatarUrl}
-        alt={props.user.name}
-      />
-  
-    );
-  }
-
-  const author = {
-      name : 'Convenience',
-      avatarUrl: 'https://www.npmjs.com/~zkat'
-  }
+}
 
 ReactDOM.render(
-    <Comment 
-        author={author} 
-        text='Test' 
-        date={Date.now()} />,
+    <App />,
     document.getElementById('root')
-);
+)
 
 registerServiceWorker();
