@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Toggle from './Toggle';
+import Greeting from './Greeting';
 import registerServiceWorker from './registerServiceWorker';
 
 
 ReactDOM.render(
-    <Toggle />,
+    <Greeting isLoggedIn={true}/>,
     document.getElementById('root')
 )
 
