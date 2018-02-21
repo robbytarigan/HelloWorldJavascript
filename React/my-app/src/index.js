@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Greeting from './Greeting';
+import LoginControl from './LoginControl';
 import registerServiceWorker from './registerServiceWorker';
 
 
 ReactDOM.render(
-    <Greeting isLoggedIn={true}/>,
+    <LoginControl />,
     document.getElementById('root')
 )
 
