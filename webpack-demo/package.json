@@ -1,0 +1,24 @@
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "Webpack demo for learning",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [
+    "webpack",
+    "demo"
+  ],
+  "author": "Robby Tarigan",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.16.0",
+    "webpack-command": "^0.4.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}
