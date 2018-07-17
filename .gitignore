@@ -1,7 +1,3 @@
 node_modules
 package-lock.json
-webpack-demo/dist/main.js
-webpack-demo/dist/*.woff
-webpack-demo/dist/*.jpg
-webpack-demo/dist/*.woff2
-webpack-demo/dist/*.js
+webpack-demo/dist/
