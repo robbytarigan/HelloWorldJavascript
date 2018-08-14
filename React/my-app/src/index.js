@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import Page from './WarningBanner';
-// import registerServiceWorker from './registerServiceWorker';
-import listItems from './MultipleComponents';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(
-    <ul>{listItems}</ul>,
-    document.getElementById('root')
-  );
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
