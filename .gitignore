@@ -1,3 +1,5 @@
 node_modules
 package-lock.json
 webpack-demo/dist/
+.next
+styled-components/webpack.config.js
